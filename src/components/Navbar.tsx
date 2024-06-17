@@ -1,7 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faEllipsisVertical, faX, faLocationDot } from '@fortawesome/free-solid-svg-icons'
-
-
 import bakery_logo from "../assets/bakery-logo.png"
 import { useState } from 'react'
 
@@ -20,7 +18,7 @@ const Navbar = () => {
     }
 
     return (
-        <>
+        <header>
             {/* Desktop Navbar */}
             <div className='w-full shadow-[0_0_5px_0_rgba(1,3,4,0.19)]'>
                 <div className='container mx-auto hidden lg:flex items-center px-3 py-3 justify-between relative z-10'>
@@ -34,7 +32,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div>
-                        <img src={bakery_logo} className='h-16' />
+                        <img src={bakery_logo} className='h-16 xl:h-20' />
                     </div>
                     <div>
                         <button className='mt-2 px-4 py-2 bg-white text-black border-2 border-pink-500 rounded-lg font-bold active:bg-pink-500 active:text-white'>Get in Touch</button>
@@ -43,7 +41,7 @@ const Navbar = () => {
             </div>
             <div className='container mx-auto hidden lg:flex justify-between items-center px-3 py-3'>
                 <div>
-                    <ul className='flex space-x-6 text-sm font-bold'>
+                    <ul className='flex space-x-9 text-sm xl:text-xl font-bold cursor-pointer'>
                         <li>Home</li>
                         <li>Offer</li>
                         <li>Team</li>
@@ -54,7 +52,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7' />
+                    <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' />
                 </div>
             </div>
 
@@ -93,7 +91,8 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </>
+        </header>
+
     )
 }
 
