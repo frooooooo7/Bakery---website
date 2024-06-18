@@ -21,7 +21,7 @@ const Navbar = () => {
         <header>
             {/* Desktop Navbar */}
             <div className='w-full shadow-[0_0_5px_0_rgba(1,3,4,0.19)]'>
-                <div className='container mx-auto hidden lg:flex items-center px-3 py-3 justify-between relative z-10'>
+                <div className='container mx-auto hidden lg:flex items-center px-3 py-3 justify-between relative z-50'>
                     <div className='flex'>
                         <div>
                             <FontAwesomeIcon icon={faLocationDot} style={{ color: "#f72293", }} className='h-9 w-9 mr-2' />
@@ -57,7 +57,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Navbar */}
-            <div className='w-full flex lg:hidden items-center px-3 justify-between shadow-[0_0_5px_0_rgba(1,3,4,0.19)] relative z-10'>
+            <div className='relative z-50 w-full flex lg:hidden items-center px-3 justify-between shadow-[0_0_5px_0_rgba(1,3,4,0.19)]'>
                 <div className="flex items-center">
                     {isOpen ?
                         <FontAwesomeIcon icon={faX} className='h-7 w-7 cursor-pointer' onClick={toggleMenu} />
@@ -80,9 +80,8 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-
-            <div className={`absolute top-15 left-0 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
-                <div className="p-4">
+            <div className={`absolute z-40 top-15 left-0 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
+                <div className="p-4 ">
                     <ul>
                         <li className="py-2"><a href="#">Home</a></li>
                         <li className="py-2"><a href="#">About</a></li>
