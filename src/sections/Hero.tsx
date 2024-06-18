@@ -2,8 +2,9 @@ import cakeImage from '../assets/cake-background.jpg';
 
 const Hero = () => {
     return (
-        <section className="w-full bg-cover bg-center" style={{ backgroundImage: `url(${cakeImage})` }}>
-            <div className='container mx-auto py-20 space-y-6 pl-3'>
+        <section className="relative w-full bg-cover bg-center bg-opacity-40 lg:bg-opacity-100" style={{ backgroundImage: `url(${cakeImage})` }}>
+            <div className='absolute inset-0 bg-white opacity-50 lg:opacity-100'></div>
+            <div className='relative z-10 container mx-auto py-20 space-y-6 pl-3'>
                 <h1 className='text-5xl lg:text-7xl font-bold'>Przepyszne</h1>
                 <div className='flex items-center space-x-4'>
                     <div className='w-14 h-1 bg-black'></div>
