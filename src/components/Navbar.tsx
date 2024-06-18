@@ -35,20 +35,20 @@ const Navbar = () => {
                         <img src={bakery_logo} className='h-16 xl:h-20' />
                     </div>
                     <div>
-                        <button className='mt-2 px-4 py-2 bg-white text-black border-2 border-pink-500 rounded-lg font-bold active:bg-pink-500 active:text-white'>Get in Touch</button>
+                        <button className='mt-2 px-4 py-2 bg-white text-black border-2 border-pink-500 rounded-lg font-bold active:bg-pink-500 active:text-white'>Skontaktuj się</button>
                     </div>
                 </div>
             </div>
             <div className='container mx-auto hidden lg:flex justify-between items-center px-3 py-3'>
                 <div>
                     <ul className='flex space-x-9 text-sm xl:text-xl font-bold cursor-pointer'>
-                        <li>Home</li>
-                        <li>Offer</li>
-                        <li>Team</li>
-                        <li>Testimonials</li>
-                        <li>Pricing</li>
-                        <li>Gallery</li>
-                        <li>Contact Us</li>
+                        <li>Strona Główna</li>
+                        <li>Oferta</li>
+                        <li>Skład</li>
+                        <li>Referencje</li>
+                        <li>Ceny</li>
+                        <li>Galeria</li>
+                        <li>Skontaktuj się</li>
                     </ul>
                 </div>
                 <div>
