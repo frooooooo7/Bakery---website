@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar"
 import Hero from "./sections/Hero"
+import Promo from "./sections/Promo"
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <Navbar/>
       <Hero/>
+      <Promo/>
     </>
   )
 }
