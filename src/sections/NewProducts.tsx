@@ -8,48 +8,73 @@ import Slider from "react-slick"
 
 const NewProducts = () => {
 
-
   const products = [
     {
       img: chocolate_truffles,
       title: "CHOCOLATE TRUFFLES",
       price: "$30.00",
       isDiscount: true,
-      discountPrice: "$23.00"
+      discountPrice: "$23.00",
+      isNew: false
     },
     {
       img: chocolate_pudding,
       title: "CHOCOLATE PUDDING",
       price: "$25.00",
       isDiscount: false,
-      discountPrice: ""
+      discountPrice: "",
+      isNew: false
     },
     {
       img: dark_chocolate_cake,
       title: "DARK CHOCOLATE CAKE",
       price: "$15.00",
       isDiscount: false,
-      discountPrice: ""
+      discountPrice: "",
+      isNew: true
     },
     {
       img: chocolate_cookies,
       title: "CHOCOLATE COOKIES",
       price: "$12.00",
       isDiscount: false,
-      discountPrice: ""
+      discountPrice: "",
+      isNew: false
     }
   ]
 
-  const settings =
-  {
-    dots: false,
+  const settings = {
+    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        }
+      }
+    ]
   }
-
-
 
   return (
     <section className="px-2 py-10 lg:py-32 mt-10 bg-slate-100">
@@ -57,36 +82,42 @@ const NewProducts = () => {
         <h1 className="text-center text-3xl font-bold pb-10">NOWE PRODUKTY</h1>
         <div className="slider-container">
           <Slider {...settings}>
-          {products.map((product, index) => (
-            <div key={index} className="flex flex-col items-center justify-center">
-              <div className="bg-white mx-11 pt-20 pb-5 shadow-lg space-y-2">
-              <div className="h-40 flex items-center justify-center">
-                <img src={product.img} className="h-full object-cover" />
-              </div>
-              <h1 className="text-center font-bold">{product.title}</h1>
-              <div>
-                {product.isDiscount ? 
-                  <div className="flex items-center justify-center space-x-3">
-                    <h3 className="text-gray-400 line-through font-bold">{product.price}</h3>
-                    <h3 className="text-pink-700 font-bold">{product.discountPrice}</h3>
+            {products.map((product, index) => (
+              <div key={index} className="px-4">
+                <div className="relative bg-white pb-5 shadow-lg space-y-2">
+                  {product.isDiscount && (
+                    <span className="absolute top-0 left-0 bg-pink-600 text-white px-2 py-1 text-xs font-bold">SALE</span>
+                  )}
+                  {product.isNew && (
+                    <span className="absolute top-0 right-0 bg-black text-white px-2 py-1 text-xs font-bold">NEW</span>
+                  )}
+                  <div className="h-40  flex items-center justify-center px-4">
+                    <img src={product.img} className="h-max" />
                   </div>
-                  :
-                  <div className="flex items-center justify-center">
-                    <h3 className="text-pink-700 font-bold">{product.price}</h3>
+                  <h1 className="text-center font-bold px-4">{product.title}</h1>
+                  <div className="px-4">
+                    {product.isDiscount ? (
+                      <div className="flex items-center justify-center space-x-3">
+                        <h3 className="text-gray-400 line-through font-bold">{product.price}</h3>
+                        <h3 className="text-pink-700 font-bold">{product.discountPrice}</h3>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center">
+                        <h3 className="text-pink-700 font-bold">{product.price}</h3>
+                      </div>
+                    )}
                   </div>
-                }
+                  <div className="flex items-center justify-center space-x-4 pt-4">
+                    <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
+                      <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                    <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
+                      <FontAwesomeIcon icon={faShoppingCart} />
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center justify-center space-x-4">
-                <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-                <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
-                  <FontAwesomeIcon icon={faShoppingCart} />
-                </button>
-              </div>
-            </div>
-            </div>
-          ))}
+            ))}
           </Slider>
         </div>
       </div>
