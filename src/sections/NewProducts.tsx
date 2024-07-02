@@ -4,6 +4,7 @@ import dark_chocolate_cake from "../assets/NEW_PRODUCTS/product-3.png"
 import chocolate_cookies from "../assets/NEW_PRODUCTS/product-4.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import Slider from "react-slick"
 
 const NewProducts = () => {
 
@@ -39,6 +40,15 @@ const NewProducts = () => {
     }
   ]
 
+  const settings =
+  {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
+
 
 
   return (
@@ -46,21 +56,27 @@ const NewProducts = () => {
       <div className="container mx-auto">
         <h1 className="text-center text-3xl font-bold pb-10">NOWE PRODUKTY</h1>
         <div className="slider-container">
+          <Slider {...settings}>
           {products.map((product, index) => (
             <div key={index} className="flex flex-col items-center justify-center">
-              <div>
-                <img src={product.img} className="" />
+              <div className="bg-white mx-11 pt-20 pb-5 shadow-lg space-y-2">
+              <div className="h-40 flex items-center justify-center">
+                <img src={product.img} className="h-full object-cover" />
               </div>
-              <h1>{product.title}</h1>
+              <h1 className="text-center font-bold">{product.title}</h1>
               <div>
-                {product.isDiscount &&
-                  <div className="flex">
-                    <h3 className="text-gray-400 line-through">{product.price}</h3>
-                    <h3>{product.discountPrice}</h3>
+                {product.isDiscount ? 
+                  <div className="flex items-center justify-center space-x-3">
+                    <h3 className="text-gray-400 line-through font-bold">{product.price}</h3>
+                    <h3 className="text-pink-700 font-bold">{product.discountPrice}</h3>
+                  </div>
+                  :
+                  <div className="flex items-center justify-center">
+                    <h3 className="text-pink-700 font-bold">{product.price}</h3>
                   </div>
                 }
               </div>
-              <div className="flex">
+              <div className="flex items-center justify-center space-x-4">
                 <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
@@ -69,7 +85,9 @@ const NewProducts = () => {
                 </button>
               </div>
             </div>
+            </div>
           ))}
+          </Slider>
         </div>
       </div>
     </section>
