@@ -84,28 +84,30 @@ const NewProducts = () => {
           <Slider {...settings}>
             {products.map((product, index) => (
               <div key={index} className="px-4">
-                <div className="relative bg-white pb-5 shadow-lg space-y-2">
-                  {product.isDiscount && (
-                    <span className="absolute top-0 left-0 bg-pink-600 text-white px-2 py-1 text-xs font-bold">SALE</span>
-                  )}
-                  {product.isNew && (
-                    <span className="absolute top-0 right-0 bg-black text-white px-2 py-1 text-xs font-bold">NEW</span>
-                  )}
-                  <div className="h-40  flex items-center justify-center px-4">
-                    <img src={product.img} className="h-max" />
-                  </div>
-                  <h1 className="text-center font-bold px-4">{product.title}</h1>
-                  <div className="px-4">
-                    {product.isDiscount ? (
-                      <div className="flex items-center justify-center space-x-3">
-                        <h3 className="text-gray-400 line-through font-bold">{product.price}</h3>
-                        <h3 className="text-pink-700 font-bold">{product.discountPrice}</h3>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-center">
-                        <h3 className="text-pink-700 font-bold">{product.price}</h3>
-                      </div>
+                <div className="relative bg-white pb-5 pt-7 shadow-lg flex flex-col justify-between" style={{ height: '350px' }}>
+                  <div>
+                    {product.isDiscount && (
+                      <span className="absolute top-0 left-0 bg-pink-600 text-white px-2 py-1 text-xs font-bold">SALE</span>
                     )}
+                    {product.isNew && (
+                      <span className="absolute top-0 right-0 bg-black text-white px-2 py-1 text-xs font-bold">NEW</span>
+                    )}
+                    <div className="h-40 flex items-center justify-center px-4">
+                      <img src={product.img} className="h-max" />
+                    </div>
+                    <h1 className="text-center font-bold px-4">{product.title}</h1>
+                    <div className="px-4">
+                      {product.isDiscount ? (
+                        <div className="flex items-center justify-center space-x-3">
+                          <h3 className="text-gray-400 line-through font-bold">{product.price}</h3>
+                          <h3 className="text-pink-700 font-bold">{product.discountPrice}</h3>
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-center">
+                          <h3 className="text-pink-700 font-bold">{product.price}</h3>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="flex items-center justify-center space-x-4 pt-4">
                     <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
