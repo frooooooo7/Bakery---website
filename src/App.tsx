@@ -3,6 +3,7 @@ import Hero from "./sections/Hero"
 import Promo from "./sections/Promo"
 import Offer from "./sections/Offer"
 import NewProducts from "./sections/NewProducts"
+import ChooseUs from "./sections/ChooseUs"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Promo/>
       <Offer/>
       <NewProducts/>
+      <ChooseUs/>
     </>
   )
 }
