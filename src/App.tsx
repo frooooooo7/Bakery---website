@@ -4,6 +4,7 @@ import Promo from "./sections/Promo"
 import Offer from "./sections/Offer"
 import NewProducts from "./sections/NewProducts"
 import ChooseUs from "./sections/ChooseUs"
+import SummerSale from "./sections/SummerSale"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Offer/>
       <NewProducts/>
       <ChooseUs/>
+      <SummerSale/>
     </>
   )
 }
