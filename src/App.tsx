@@ -5,6 +5,7 @@ import Offer from "./sections/Offer"
 import NewProducts from "./sections/NewProducts"
 import ChooseUs from "./sections/ChooseUs"
 import SummerSale from "./sections/SummerSale"
+import AboutUs from "./sections/AboutUs"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <NewProducts/>
       <ChooseUs/>
       <SummerSale/>
+      <AboutUs/>
     </>
   )
 }
