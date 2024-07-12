@@ -6,6 +6,7 @@ import NewProducts from "./sections/NewProducts"
 import ChooseUs from "./sections/ChooseUs"
 import SummerSale from "./sections/SummerSale"
 import AboutUs from "./sections/AboutUs"
+import Team from "./sections/Team"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <ChooseUs/>
       <SummerSale/>
       <AboutUs/>
+      <Team/>
     </>
   )
 }
