@@ -4,7 +4,7 @@ const SummerSale = () => {
     return (
         <section className="relative mt-10 w-full bg-cover bg-center" style={{ backgroundImage: `url(${summerSale})` }}>
             <div className="md:pl-10 bg-slate-200 bg-opacity-60 lg:bg-opacity-20">
-                <div className="container mx-auto space-y-6 flex flex-col items-center pb-20 pt-20 md:items-start">
+                <div className="container mx-auto space-y-6 flex flex-col items-center pb-20 pt-20 md:items-start max-w-6xl">
                     <h1 className="text-2xl font-bold tracking-wider md:text-4xl lg:text-5xl">LETNIA WYPRZEDAŻ</h1>
                     <div className="flex items-center justify-center gap-5">
                         <h1 className="text-4xl font-bold text-pink-700 lg:text-5xl">-20%</h1>
