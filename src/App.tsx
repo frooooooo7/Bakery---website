@@ -7,6 +7,7 @@ import ChooseUs from "./sections/ChooseUs"
 import SummerSale from "./sections/SummerSale"
 import AboutUs from "./sections/AboutUs"
 import Team from "./sections/Team"
+import Offer2 from "./sections/Offer2"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <SummerSale/>
       <AboutUs/>
       <Team/>
+      <Offer2/>
     </>
   )
 }
