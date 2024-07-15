@@ -1,0 +1,92 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuoteRight } from '@fortawesome/free-solid-svg-icons'
+import client1 from "../assets/TESTIMONIAL/1.jpg"
+import client2 from "../assets/TESTIMONIAL/2.jpg"
+import client3 from "../assets/TESTIMONIAL/3.jpg"
+import client4 from "../assets/TESTIMONIAL/4.jpg"
+import Slider from 'react-slick'
+
+const testimonials = [
+    {
+        name: "Patryk",
+        avatar: client1,
+        desc: "Dziękuję bardzo za eleganckie babeczki. Wyglądały i smakowały niesamowicie. Polecam wszystkim moim znajomym.",
+    },
+    {
+        name: "Julia",
+        avatar: client2,
+        desc: "Chciałam tylko powiedzieć, jak wspaniały był wasz tort weselny. Wielu gości komentowało, jak pysznie smakował.",
+    },
+    {
+        name: "Tomasz",
+        avatar: client3,
+        desc: "Jeśli szukasz pyszności w ustach, zdecydowanie powinieneś spróbować produktów ze Słodkiej Piekarni.",
+    },
+    {
+        name: "Helena",
+        avatar: client4,
+        desc: "Ta piekarnia była świetna do współpracy i będę z niej korzystać podczas moich przyszłych wydarzeń. Ich babeczki smakowały absolutnie zachwycająco.",
+    },
+];
+
+const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows: false,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                dots: true,
+            },
+        },
+        {
+            breakpoint: 670,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+            }
+        }
+    ]
+};
+
+
+const Testimonials = () => {
+    return (
+        <section className="px-2">
+            <div className="container mx-auto py-10">
+                <h1 className='text-center text-2xl font-bold pb-10'>TESTIMONIALS</h1>
+                <Slider {...settings}>
+                    {testimonials.map((testimonial, index) => (
+                        <div key={index} className='testimonial'>
+                            <div className='flex flex-col items-center text-center border-b border-gray-300'>
+                                <FontAwesomeIcon className='text-3xl text-pink-700 opacity-50' icon={faQuoteRight}></FontAwesomeIcon>
+                                <p className='pb-5 text-gray-600 tracking-wide'>{testimonial.desc}</p>
+                            </div>
+                            <div className='flex flex-col items-center pt-5'>
+                                <img src={testimonial.avatar} className='w-16 border rounded-full mb-2'/>
+                                <h1 className='text-sm font-bold'>{testimonial.name}</h1>
+                                <h1 className='text-sm text-pink-700'>Client</h1>
+                            </div>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+        </section>
+    )
+}
+
+export default Testimonials
