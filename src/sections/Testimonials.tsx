@@ -54,7 +54,7 @@ const settings = {
 
 const Testimonials = () => {
     return (
-        <section className="px-2 py-10">
+        <section className="px-2 py-6 lg:py-12">
             <div className="container mx-auto">
                 <h1 className='text-center text-2xl font-bold pb-10 md:text-3xl lg:text-5xl xl:text-6xl'>OPINIE KLIENTÓW</h1>
                 <Slider {...settings}>

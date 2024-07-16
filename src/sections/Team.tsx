@@ -64,7 +64,7 @@ const settings = {
 
 const Team = () => {
     return (
-        <section className="relative mt-10 w-full bg-gray-100">
+        <section className="py-6 lg:py-12 relative w-full bg-gray-100">
             <div className="container mx-auto px-2 max-w-7xl">
                 <h1 className="text-center pt-10 pb-10 text-3xl font-bold lg:text-5xl xl:text-6xl">NASZA DRUŻYNA</h1>
                 <Slider {...settings}>
