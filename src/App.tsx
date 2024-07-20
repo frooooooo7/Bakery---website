@@ -9,6 +9,7 @@ import AboutUs from "./sections/AboutUs"
 import Team from "./sections/Team"
 import Offer2 from "./sections/Offer2"
 import Testimonials from "./sections/Testimonials"
+import Logos from "./sections/Logos"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       <Team/>
       <Offer2/>
       <Testimonials/>
+      <Logos/>
     </>
   )
 }
