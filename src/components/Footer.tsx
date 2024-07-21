@@ -93,7 +93,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="icons flex justify-center items-center gap-4 mb-20">
+                <div className="icons flex justify-center items-center gap-4">
                     <i className="w-10"><Facebook /></i>
                     <i className="w-10"><Twitter /></i>
                     <i className="w-10"><Instagram /></i>

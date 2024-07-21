@@ -11,6 +11,7 @@ import Offer2 from "./sections/Offer2"
 import Testimonials from "./sections/Testimonials"
 import Logos from "./sections/Logos"
 import Footer from "./components/Footer"
+import CopyrightNotice from "./components/CopyrightNotice"
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Testimonials/>
       <Logos/>
       <Footer/>
+      <CopyrightNotice/>
     </>
   )
 }
