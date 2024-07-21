@@ -10,6 +10,7 @@ import Team from "./sections/Team"
 import Offer2 from "./sections/Offer2"
 import Testimonials from "./sections/Testimonials"
 import Logos from "./sections/Logos"
+import Footer from "./components/Footer"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Offer2/>
       <Testimonials/>
       <Logos/>
+      <Footer/>
     </>
   )
 }
