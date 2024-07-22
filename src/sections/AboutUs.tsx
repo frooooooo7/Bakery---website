@@ -3,7 +3,7 @@ import TabComponent from "../components/TabComponent"
 
 const AboutUs = () => {
   return (
-    <section className="px-2">
+    <section className="px-2 py-6 lg:py-12">
       <div className="container mx-auto mt-10">
         <h1 className="text-center text-3xl font-bold mb-10 lg:text-5xl xl:text-6xl">O NAS</h1>
         <div className="block lg:flex lg:gap-5">

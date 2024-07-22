@@ -4,9 +4,9 @@ import strawberries from '../assets/strawberries.jpg'
 
 const ChooseUs = () => {
     return (
-        <section className="px-2">
+        <section className="px-2 py-6 lg:py-12">
             <div className="container mx-auto mt-10">
-                <h1 className="text-center text-3xl font-bold">DLACZEGO MY?</h1>
+                <h1 className="text-center text-3xl font-bold md:text-3xl lg:text-5xl xl:text-6xl">DLACZEGO MY?</h1>
 
                 {/*MOBILE LOOK*/}
                 <div className='grid md:grid-cols-2 gap-2 lg:hidden'>

@@ -77,9 +77,9 @@ const NewProducts = () => {
   }
 
   return (
-    <section className="px-2 py-10 lg:py-32 mt-10 bg-slate-100">
+    <section className="px-2 py-6 lg:py-12 mt-10 bg-slate-100">
       <div className="container mx-auto">
-        <h1 className="text-center text-3xl font-bold pb-10">NOWE PRODUKTY</h1>
+        <h1 className="text-center text-3xl font-bold pb-10 md:text-3xl lg:text-5xl xl:text-6xl">NOWE PRODUKTY</h1>
         <div className="slider-container">
           <Slider {...settings}>
             {products.map((product, index) => (

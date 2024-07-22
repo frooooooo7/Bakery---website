@@ -61,9 +61,9 @@ const Offer = () => {
     };
 
     return (
-        <section className="px-2 pt-10">
+        <section className="px-2 py-6 lg:py-12">
             <div className="container mx-auto">
-                <h1 className='text-center text-3xl font-bold pb-10'>CO OFERUJEMY</h1>
+                <h1 className='text-center text-3xl font-bold pb-10 md:text-3xl lg:text-5xl xl:text-6xl'>CO OFERUJEMY</h1>
                 <div className="slider-container">
                     <Slider {...settings}>
                         {offers.map((offer, index) => (
