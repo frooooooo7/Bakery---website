@@ -30,7 +30,7 @@ function App() {
       <Testimonials/>
       <Logos/>
       <Footer/>
-      <CopyrightNotice/>
+      <CopyrightNotice/> 
     </>
   )
 }

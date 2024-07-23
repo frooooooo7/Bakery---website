@@ -10,3 +10,7 @@
 .slick-dots li.slick-active button:before {
     color: #be185d;
 }
+
+.slider-container {
+    overflow-x: hidden;
+}
