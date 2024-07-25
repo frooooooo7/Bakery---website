@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteRight } from '@fortawesome/free-solid-svg-icons'
-import client1 from "../assets/TESTIMONIAL/1.jpg"
-import client2 from "../assets/TESTIMONIAL/2.jpg"
-import client3 from "../assets/TESTIMONIAL/3.jpg"
-import client4 from "../assets/TESTIMONIAL/4.jpg"
+import client1 from "../../../assets/TESTIMONIAL/1.jpg"
+import client2 from "../../../assets/TESTIMONIAL/2.jpg"
+import client3 from "../../../assets/TESTIMONIAL/3.jpg"
+import client4 from "../../../assets/TESTIMONIAL/4.jpg"
 import Slider from 'react-slick'
 
 const testimonials = [

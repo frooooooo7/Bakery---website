@@ -1,4 +1,4 @@
-import offer2 from "../assets/offer2.jpg"
+import offer2 from "../../../assets/offer2.jpg"
 
 const Offer2 = () => {
   return (

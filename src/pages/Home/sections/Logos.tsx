@@ -1,10 +1,10 @@
-import logo1 from "../assets/LOGOS/1.png"
-import logo2 from "../assets/LOGOS/2.png"
-import logo3 from "../assets/LOGOS/3.png"
-import logo4 from "../assets/LOGOS/4.png"
-import logo5 from "../assets/LOGOS/5.png"
+import logo1 from "../../../assets/LOGOS/1.png"
+import logo2 from "../../../assets/LOGOS/2.png"
+import logo3 from "../../../assets/LOGOS/3.png"
+import logo4 from "../../../assets/LOGOS/4.png"
+import logo5 from "../../../assets/LOGOS/5.png"
 import Slider from 'react-slick'
-import background from "../assets/LOGOS/background.jpg"
+import background from "../../../assets/LOGOS/background.jpg"
 
 
 const settings = {

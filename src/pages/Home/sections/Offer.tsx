@@ -1,9 +1,9 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import party_cupcakes from "../assets/party_cupcakes.jpg";
-import choco_cupcakes from "../assets/choco_cakes.webp";
-import weeding_cakes from "../assets/weeding_cakes.webp";
+import party_cupcakes from "../../../assets/party_cupcakes.jpg";
+import choco_cupcakes from "../../../assets/choco_cakes.webp";
+import weeding_cakes from "../../../assets/weeding_cakes.webp";
 
 
 const Offer = () => {

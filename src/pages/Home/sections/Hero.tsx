@@ -1,4 +1,4 @@
-import cakeImage from '../assets/cake-background.jpg';
+import cakeImage from '../../../assets/cake-background.jpg';
 
 const Hero = () => {
     return (

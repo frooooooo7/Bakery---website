@@ -1,14 +1,12 @@
-import React from "react";
-import chef1 from "../assets/TEAM/chef.jpg";
-import chef2 from "../assets/TEAM/chef2.jpg";
-import chef3 from "../assets/TEAM/chef3.jpg";
+import chef1 from "../../../assets/TEAM/chef.jpg";
+import chef2 from "../../../assets/TEAM/chef2.jpg";
+import chef3 from "../../../assets/TEAM/chef3.jpg";
 import Slider from "react-slick";
-import "../components/SliderCustom.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Twitter from "../assets/svg/Twitter";
-import Facebook from "../assets/svg/Facebook";
-import Instagram from "../assets/svg/Instagram";
-import Google from "../assets/svg/Google";
+import "../../../components/SliderCustom.css";
+import Twitter from "../../../assets/svg/Twitter";
+import Facebook from "../../../assets/svg/Facebook";
+import Instagram from "../../../assets/svg/Instagram";
+import Google from "../../../assets/svg/Google";
 
 const chefs = [
     {

@@ -1,5 +1,5 @@
-import aboutUs from "../assets/aboutUs.jpg"
-import TabComponent from "../components/TabComponent"
+import aboutUs from "../../../assets/aboutUs.jpg"
+import TabComponent from "../../../components/TabComponent"
 
 const AboutUs = () => {
   return (

@@ -1,4 +1,4 @@
-import summerSale from "../assets/summerSale.jpg"
+import summerSale from "../../../assets/summerSale.jpg"
 
 const SummerSale = () => {
     return (

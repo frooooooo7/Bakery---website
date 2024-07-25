@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCakeCandles, faTruck, faFan, faCreditCard } from '@fortawesome/free-solid-svg-icons'
-import strawberries from '../assets/strawberries.jpg'
+import strawberries from '../../../assets/strawberries.jpg'
 
 const ChooseUs = () => {
     return (

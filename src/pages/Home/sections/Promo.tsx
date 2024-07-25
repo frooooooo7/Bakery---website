@@ -1,4 +1,4 @@
-import cakes from "../assets/promo-cakes.png"
+import cakes from "../../../assets/promo-cakes.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
