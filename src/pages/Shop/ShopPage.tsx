@@ -1,11 +1,13 @@
 import Navbar from "../../components/Navbar"
-import Shop from "./Shop"
+import Filters from "./sections/Filters"
+import Shop from "./sections/ShopBanner"
 
 const ShopPage = () => {
   return (
     <div>
       <Navbar/>
       <Shop/>
+      <Filters/>
     </div>
   )
 }

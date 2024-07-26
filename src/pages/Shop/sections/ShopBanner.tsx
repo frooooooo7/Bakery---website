@@ -1,8 +1,8 @@
-import shopBackground from "../../assets/shop.jpg"
+import shopBackground from "../../../assets/shop.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-const Shop = () => {
+const ShopBanner = () => {
     return (
         <section>
             <div className="relative w-full bg-cover bg-center" style={{ backgroundImage: `url(${shopBackground})` }}>
@@ -20,4 +20,4 @@ const Shop = () => {
     )
 }
 
-export default Shop
+export default ShopBanner
