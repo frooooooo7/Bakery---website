@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RangeSlider from "../components/RangeSlider";
+import CheckboxLabels from "../components/CheckboxLabels";
 
 const Filters = () => {
   const [rangeValue, setRangeValue] = useState<number[]>([20, 100]);
@@ -18,6 +19,10 @@ const Filters = () => {
             <button className='mt-2 px-4 lg:px-10 py-1 lg:py-5 bg-pink-700 text-white border-2 border-pink-800 rounded-lg font-bold active:bg-pink-500'>FILTRUJ</button>
             <h1>Cena: ${rangeValue[0]} - ${rangeValue[1]}</h1>
           </div>
+        </div>
+        <div>
+          <h1 className="mt-10 text-center font-bold border-b border-gray-300 pb-3 uppercase">Kategorie</h1>
+           <CheckboxLabels/>
         </div>
       </div>
     </section>
