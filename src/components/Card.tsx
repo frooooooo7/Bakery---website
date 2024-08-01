@@ -1,9 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-const Card = (props:any) => {
+
+interface CardProps {
+  img: string;
+  title: string;
+  price: string;
+  discountPrice?: string;
+  isDiscount: boolean;
+  isNew: boolean;
+  background: string
+}
+
+
+const Card = (props: CardProps) => {
   return (
-    <div className="relative bg-white pb-5 pt-7 shadow-lg flex flex-col justify-between" style={{ height: '350px' }}>
+    <div className={`relative ${props.background} pb-5 pt-7 shadow-lg flex flex-col justify-between`} style={{ height: '350px' }}>
                   <div>
                     {props.isDiscount && (
                       <span className="absolute top-0 left-0 bg-pink-600 text-white px-2 py-1 text-xs font-bold">SALE</span>
