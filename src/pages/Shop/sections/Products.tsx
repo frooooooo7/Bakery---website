@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Select from "../components/Select"
-import { db } from "../../../firebase";
+import { db } from "../../../config/firebase";
 import { collection,getDocs } from "firebase/firestore";
 import Card from "../../../components/Card";
 
