@@ -90,6 +90,7 @@ const NewProducts = () => {
                 isNew={product.isNew}
                 img={product.img}
                 title={product.title}
+                background={"bg-white"}
                 />
               </div>
             ))}
