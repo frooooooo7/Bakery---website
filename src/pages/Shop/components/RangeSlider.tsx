@@ -1,6 +1,7 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import { useState } from 'react';
+
 
 interface RangeSliderProps {
   onValueChange: (value: number[]) => void;
@@ -8,7 +9,7 @@ interface RangeSliderProps {
 
 
 export default function RangeSlider({ onValueChange }: RangeSliderProps) {
-  const [value, setValue] = React.useState<number[]>([30, 100]);
+  const [value, setValue] = useState<number[]>([30, 100]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);

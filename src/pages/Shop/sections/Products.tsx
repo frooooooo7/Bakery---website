@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Select from "../components/Select"
-import { db } from "../../../config/firebase";
 import { collection,getDocs } from "firebase/firestore";
 import Card from "../../../components/Card";
+import { db } from "../../../firebase";
+import { RangeContext } from "../context/RangeSliderContext";
+
+
 
 
 interface Product {
@@ -19,6 +22,8 @@ interface Product {
 const Products = () => {
 
 const [products, setProducts] = useState<Product[]>([]);
+
+const { sliderValue } = useContext(RangeContext);
 
 const getProducts = async () => {
 
@@ -44,7 +49,7 @@ useEffect(() => {
           <div className="flex justify-center">
             <Select/>
           </div>
-          <div className="grid grid-cols-1 gap-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5">
             {products.map((product) => (
               <div key={product.productID} className="px-4">
                   <Card
@@ -59,6 +64,7 @@ useEffect(() => {
               </div>
             ))}
           </div>
+          {sliderValue}
         </div>
     </section>
   )
