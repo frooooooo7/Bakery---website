@@ -31,12 +31,12 @@ const Card = (props: CardProps) => {
           <div className="px-4">
             {props.isDiscount ? (
               <div className="flex items-center justify-center space-x-3">
-                <h3 className="text-gray-400 line-through font-bold">{props.price}</h3>
-                <h3 className="text-pink-700 font-bold">{props.discountPrice}</h3>
+                <h3 className="text-gray-400 line-through font-bold">{Number(props.price).toFixed(2)}</h3>
+                <h3 className="text-pink-700 font-bold">{Number(props.discountPrice).toFixed(2)} PLN</h3>
               </div>
             ) : (
               <div className="flex items-center justify-center">
-                <h3 className="text-pink-700 font-bold">{props.price}</h3>
+                <h3 className="text-pink-700 font-bold">{Number(props.price).toFixed(2)} PLN</h3>
               </div>
             )}
           </div>
