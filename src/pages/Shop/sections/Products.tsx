@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import Select from "../components/Select"
-import { collection,getDocs } from "firebase/firestore";
+import { collection,getDocs, query, where } from "firebase/firestore";
 import Card from "../../../components/Card";
 import { db } from "../../../firebase";
 import { RangeContext } from "../context/RangeSliderContext";
@@ -26,10 +26,16 @@ const [products, setProducts] = useState<Product[]>([]);
 const { sliderValue } = useContext(RangeContext);
 
 const getProducts = async () => {
-
   try {
     const ref = collection(db, "Products");
-    const products = await getDocs(ref);
+    let q;
+    if (sliderValue.length > 0) {
+      q = query(ref, where("price", ">=", sliderValue[0]), where("price", "<=", sliderValue[1]));
+    } else {
+      q = ref;
+    }
+    const products = await getDocs(q);
+    console.log('products:', products);
     setProducts(products.docs.map((doc) => ({...doc.data(), productID: doc.id})) as Product[])
   } catch (error)
   {
@@ -37,10 +43,9 @@ const getProducts = async () => {
   }
 }
 
-
 useEffect(() => {
   getProducts();
-},[])
+},[sliderValue])
 
 
   return (
@@ -64,7 +69,6 @@ useEffect(() => {
               </div>
             ))}
           </div>
-          {sliderValue}
         </div>
     </section>
   )

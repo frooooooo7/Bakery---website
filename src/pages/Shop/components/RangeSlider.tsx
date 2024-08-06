@@ -9,7 +9,7 @@ interface RangeSliderProps {
 
 
 export default function RangeSlider({ onValueChange }: RangeSliderProps) {
-  const [value, setValue] = useState<number[]>([30, 100]);
+  const [value, setValue] = useState<number[]>([1, 30]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
@@ -24,7 +24,7 @@ export default function RangeSlider({ onValueChange }: RangeSliderProps) {
         onChange={handleChange}
         valueLabelDisplay="auto"
         min={1}
-        max={1000}
+        max={200}
       />
     </Box>
   );
