@@ -6,8 +6,6 @@ import { db } from "../../../firebase";
 import { RangeContext } from "../context/RangeSliderContext";
 
 
-
-
 interface Product {
   productID: string;
   title: string;
