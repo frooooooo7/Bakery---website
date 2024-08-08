@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar"
+import { CheckboxLabelsProvider } from "./context/CheckboxLabelsContext"
 import { RangeSliderProvider } from "./context/RangeSliderContext"
 import Filters from "./sections/Filters"
 import Products from "./sections/Products"
@@ -9,10 +10,12 @@ const ShopPage = () => {
     <div>
       <Navbar />
       <Shop />
-      <RangeSliderProvider>
-        <Filters />
-        <Products />
-      </RangeSliderProvider>
+      <CheckboxLabelsProvider>
+        <RangeSliderProvider>
+          <Filters />
+          <Products />
+        </RangeSliderProvider>
+      </CheckboxLabelsProvider>
     </div>
   )
 }

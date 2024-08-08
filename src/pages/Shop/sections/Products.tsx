@@ -4,6 +4,7 @@ import { collection,getDocs, query, where } from "firebase/firestore";
 import Card from "../../../components/Card";
 import { db } from "../../../firebase";
 import { RangeContext } from "../context/RangeSliderContext";
+import { CheckboxLabelsContext } from "../context/CheckboxLabelsContext";
 
 
 interface Product {
@@ -22,6 +23,7 @@ const Products = () => {
 const [products, setProducts] = useState<Product[]>([]);
 
 const { sliderValue } = useContext(RangeContext);
+const { checked } = useContext(CheckboxLabelsContext)
 
 const getProducts = async () => {
   try {
@@ -33,7 +35,7 @@ const getProducts = async () => {
       q = ref;
     }
     const products = await getDocs(q);
-    console.log('products:', products);
+    console.log(checked)
     setProducts(products.docs.map((doc) => ({...doc.data(), productID: doc.id})) as Product[])
   } catch (error)
   {

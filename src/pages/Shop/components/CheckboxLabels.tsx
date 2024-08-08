@@ -11,9 +11,16 @@ export default function CheckboxLabels() {
     const { checked, setChecked } = useContext(CheckboxLabelsContext);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setChecked({...checked, [event.target.name]: event.target.checked})
+        if (event.target.name !== 'everything' && checked.everything) {
+            setChecked({ ...checked, everything: false, [event.target.name]: event.target.checked });
+        } else if (event.target.name === "everything")
+        {
+            setChecked({ everything: true, cakes: false, puddings: false, candies: false });
+        }
+        else {
+            setChecked({ ...checked, [event.target.name]: event.target.checked });
+        }
     }
-
 
     return (
         <FormGroup>
