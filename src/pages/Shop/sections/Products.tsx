@@ -14,7 +14,8 @@ interface Product {
   discountPrice?: string;
   img: string;
   isDiscount: boolean;
-  isNew: boolean
+  isNew: boolean;
+  category: string;
 }
 
 
@@ -34,8 +35,22 @@ const getProducts = async () => {
     } else {
       q = ref;
     }
+
+    if (!checked.everything) {
+      const categories = [];
+      if (checked.cakes) categories.push("cakes");
+      if (checked.puddings) categories.push("puddings");
+      if (checked.candies) categories.push("candies");
+      if (categories.length === 0) {
+        // jeśli żadna kategoria nie jest zaznaczona, nie filtruj po kategorii
+        q = ref;
+      } else {
+        q = query(q, where("category", "in", categories));
+      }
+      console.log(categories)
+    }
+
     const products = await getDocs(q);
-    console.log(checked)
     setProducts(products.docs.map((doc) => ({...doc.data(), productID: doc.id})) as Product[])
   } catch (error)
   {
@@ -45,7 +60,7 @@ const getProducts = async () => {
 
 useEffect(() => {
   getProducts();
-},[sliderValue])
+},[sliderValue, checked])
 
 
   return (
