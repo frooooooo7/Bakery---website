@@ -38,14 +38,14 @@ const PopularProducts = () => {
 
     return (
         <section className="pt-10 px-2">
-            <h1 className="text-center font-bold border-b border-gray-300 pb-3 uppercase mb-10">Popularne produkty</h1>
-            <div className="container mx-auto flex justify-center">
+            <h1 className="text-center font-bold border-b border-gray-300 pb-3 uppercase mb-5">Popularne produkty</h1>
+            <div className="container mx-auto flex lg:flex-col justify-center items-center lg:space-y-5">
                 {popularProducts.map((product) => (
                     <div key={product.productID} className="w-52 flex flex-col items-center">
                         <div className="w-24 h-24 bg-gray-200 mb-2">
                             <img src={product.img} className="h-full" />
                         </div>
-                        <h1 className="text-center text-xs font-bold tracking-wider">{product.title}</h1>
+                        <h1 className="text-center text-xs font-bold tracking-wider mb-1">{product.title}</h1>
                         {product.isDiscount ? (
                             <div className="flex items-center justify-center space-x-3 text-xs">
                                 <h3 className="text-gray-400 line-through font-bold">{Number(product.price).toFixed(2)}</h3>
