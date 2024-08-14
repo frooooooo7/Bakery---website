@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faEllipsisVertical, faX, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import bakery_logo from "../assets/bakery-logo.png"
 import { useState } from 'react'
+import "../styles/ButtonFun.css"
 
 
 const Navbar = () => {
@@ -24,18 +26,21 @@ const Navbar = () => {
                 <div className='container mx-auto hidden lg:flex items-center px-3 py-3 justify-between relative z-50'>
                     <div className='flex'>
                         <div>
-                            <FontAwesomeIcon icon={faLocationDot} style={{ color: "#f72293", }} className='h-9 w-9 mr-2' />
+                            <FontAwesomeIcon icon={faLocationDot} style={{ color: "#be185d", }} className='h-9 w-9 mr-2' />
                         </div>
-                        <div>
+                        <div className='hover:text-[#be185d] transition duration-300 cursor-pointer'>
                             <p className='font-bold'>Zygmunta Krasińskiego 55a</p>
                             <p>38-200 Jasło</p>
                         </div>
                     </div>
-                    <div>
+                    <div className='cursor-pointer'>
                         <img src={bakery_logo} className='h-16 xl:h-20' />
                     </div>
                     <div>
-                        <button className='mt-2 px-4 py-2 bg-white text-black border-2 border-pink-500 rounded-lg font-bold active:bg-pink-500 active:text-white'>Skontaktuj się</button>
+                        <button className='button material-bubble flex items-center justify-center'>           
+                            <FontAwesomeIcon icon={faEnvelope} className='w-4 h-4'/>
+                            Skontaktuj się
+                        </button>
                     </div>
                 </div>
             </div>
