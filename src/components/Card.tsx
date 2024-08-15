@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { CartContext } from '../contexts/CartContext';
+import { useContext } from 'react';
 
 interface CardProps {
   img: string;
@@ -12,6 +14,9 @@ interface CardProps {
 }
 
 const Card = (props: CardProps) => {
+
+  const { addToCart } = useContext(CartContext) ?? {};
+
   return (
     <div className={`relative ${props.background} pb-5 pt-7 shadow-lg flex flex-col justify-between`} style={{ width: '300px', height: '350px' }}>
       <div>
@@ -43,7 +48,7 @@ const Card = (props: CardProps) => {
           <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
-          <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center">
+          <button className="w-12 h-12 bg-pink-700 text-white rounded-full flex items-center justify-center" onClick={() => addToCart?.(props)}>
             <FontAwesomeIcon icon={faShoppingCart} />
           </button>
         </div>

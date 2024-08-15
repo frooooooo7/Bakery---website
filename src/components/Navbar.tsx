@@ -2,22 +2,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faEllipsisVertical, faX, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import bakery_logo from "../assets/bakery-logo.png"
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import "../styles/ButtonFun.css"
+import { CartContext } from '../contexts/CartContext'
 
 
 const Navbar = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [isLoc, setIsLoc] = useState(false);
+    const [isCart, setIsCart] = useState(false);
+    const { cart } = useContext(CartContext) ?? {};
 
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpenMenu(!isOpenMenu);
     }
 
     const toggleLoc = () => {
         setIsLoc(!isLoc)
     }
+
+    const toggleCart = () => {
+        setIsCart(!isCart)
+    }
+
+   
 
     return (
         <header>
@@ -56,15 +65,23 @@ const Navbar = () => {
                         <li>Skontaktuj się</li>
                     </ul>
                 </div>
-                <div>
-                    <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' />
+                <div className='relative'>
+                    <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' onClick={toggleCart} />
+                    <div className={`absolute z-50 top-12 right-0 bg-red-500 w-[400px] h-[450px] ${isCart ? 'block' : 'hidden'}`}>
+                        <h1>IN CART: 2 PRODUCTS</h1>
+                        <h1>TOTAL PRICE: $48</h1>
+                        <hr></hr>
+                        {cart?.map((cart) => (
+                            <div>{cart.title}</div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {/* Mobile Navbar */}
             <div className='relative z-50 w-full flex lg:hidden items-center px-3 justify-between shadow-[0_0_5px_0_rgba(1,3,4,0.19)]'>
                 <div className="flex items-center">
-                    {isOpen ?
+                    {isOpenMenu ?
                         <FontAwesomeIcon icon={faX} className='h-7 w-7 cursor-pointer' onClick={toggleMenu} />
                         :
                         <FontAwesomeIcon icon={faBars} className='h-7 w-7 cursor-pointer' onClick={toggleMenu} />}
@@ -85,7 +102,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className={`absolute z-40 top-15 left-0 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
+            <div className={`absolute z-40 top-15 left-0 h-full w-64 bg-white shadow-lg transform ${isOpenMenu ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
                 <div className="p-4 ">
                     <ul>
                         <li className="py-2"><a href="#">Home</a></li>
