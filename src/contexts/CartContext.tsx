@@ -4,8 +4,8 @@ import { createContext, useState } from 'react';
 interface Product {
     img: string;
     title: string;
-    price: string;
-    discountPrice?: string;
+    price: number;
+    discountPrice?: number;
     isDiscount: boolean;
     isNew: boolean;
 }

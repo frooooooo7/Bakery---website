@@ -5,14 +5,14 @@ import bakery_logo from "../assets/bakery-logo.png"
 import { useContext, useEffect, useState } from 'react'
 import "../styles/ButtonFun.css"
 import { CartContext } from '../contexts/CartContext'
+import Cart from './Cart'
 
 
 const Navbar = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [isLoc, setIsLoc] = useState(false);
-    const [isCart, setIsCart] = useState(false);
-    const { cart } = useContext(CartContext) ?? {};
+    const [isCartOpened, setIsCartOpened] = useState(false);
 
     const toggleMenu = () => {
         setIsOpenMenu(!isOpenMenu);
@@ -23,7 +23,7 @@ const Navbar = () => {
     }
 
     const toggleCart = () => {
-        setIsCart(!isCart)
+        setIsCartOpened(!isCartOpened)
     }
 
    
@@ -67,14 +67,7 @@ const Navbar = () => {
                 </div>
                 <div className='relative'>
                     <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' onClick={toggleCart} />
-                    <div className={`absolute z-50 top-12 right-0 bg-red-500 w-[400px] h-[450px] ${isCart ? 'block' : 'hidden'}`}>
-                        <h1>IN CART: 2 PRODUCTS</h1>
-                        <h1>TOTAL PRICE: $48</h1>
-                        <hr></hr>
-                        {cart?.map((cart) => (
-                            <div>{cart.title}</div>
-                        ))}
-                    </div>
+                    <Cart isCartOpened={isCartOpened}/>
                 </div>
             </div>
 
