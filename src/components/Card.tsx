@@ -4,10 +4,11 @@ import { CartContext } from '../contexts/CartContext';
 import { useContext } from 'react';
 
 interface CardProps {
+  productID: string;
   img: string;
   title: string;
-  price: string;
-  discountPrice?: string;
+  price: number;
+  discountPrice?: number;
   isDiscount: boolean;
   isNew: boolean;
   background: string

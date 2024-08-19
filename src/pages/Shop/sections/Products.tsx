@@ -10,8 +10,8 @@ import { CheckboxLabelsContext } from "../context/CheckboxLabelsContext";
 interface Product {
   productID: string;
   title: string;
-  price: string;
-  discountPrice?: string;
+  price: number;
+  discountPrice?: number;
   img: string;
   isDiscount: boolean;
   isNew: boolean;
@@ -73,6 +73,7 @@ useEffect(() => {
             {products.map((product) => (
               <div key={product.productID} className="px-4">
                   <Card
+                  productID={product.productID}
                   isDiscount={product.isDiscount}
                   discountPrice={product.discountPrice}
                   price={product.price}

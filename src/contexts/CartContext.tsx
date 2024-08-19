@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 
 
 interface Product {
+    productID: string;
     img: string;
     title: string;
     price: number;
@@ -13,6 +14,7 @@ interface Product {
 interface CartContextType {
     cart: Product[];
     addToCart: (product: Product) => void;
+    removeFromCart: (productID: string) => void;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -23,8 +25,12 @@ const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
         setCart((prevCart) => [...prevCart, product]);
     };
 
+    const removeFromCart = (productID: string) => {
+        setCart((prevCart) => prevCart.filter((product) => product.productID !== productID));
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
             {children}
         </CartContext.Provider>
     );
