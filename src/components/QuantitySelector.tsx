@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 
 
@@ -6,20 +6,27 @@ interface Props {
   price: number;
   discountPrice?: number;
   isDiscount: boolean;
+  onQuantityChange: (value: number) => void
 }
 
 
-const QuantitySelector = ( {price, discountPrice, isDiscount}: Props ) => {
+const QuantitySelector = ( {price, discountPrice, isDiscount, onQuantityChange}: Props ) => {
   const [quantity, setQuantity] = useState(1);
   
 
   const handleIncrement = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
+    onQuantityChange(quantity + 1);
   };
 
   const handleDecrement = () => {
     setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    onQuantityChange(quantity - 1);
   };
+
+  useEffect(() => {
+    onQuantityChange(quantity);
+  }, [quantity]);
 
   return (
     <Box display="flex" alignItems="center">
