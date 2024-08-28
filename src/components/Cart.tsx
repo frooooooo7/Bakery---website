@@ -5,7 +5,14 @@ import QuantitySelector from "./QuantitySelector";
 
 
 const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
-  const { cart, removeFromCart } = useContext(CartContext) ?? {};
+
+  const context = useContext(CartContext);
+
+  if (!context) {
+      return null; 
+  }
+  
+  const { cart, removeFromCart } = context;
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
   const [totalPrice, setTotalPrice] = useState(0);
 
