@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 
-
 interface Props {
   price: number;
   discountPrice?: number;
   isDiscount: boolean;
-  onQuantityChange: (value: number) => void
+  onQuantityChange: (value: number) => void;
+  initialQuantity?: number;
 }
 
-
-const QuantitySelector = ( {price, discountPrice, isDiscount, onQuantityChange}: Props ) => {
-  const [quantity, setQuantity] = useState(1);
-  
+const QuantitySelector = ({ price, discountPrice, isDiscount, onQuantityChange, initialQuantity = 1 }: Props) => {
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const handleIncrement = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
-    onQuantityChange(quantity + 1);
+    setQuantity(prevQuantity => {
+      const newQuantity = prevQuantity + 1;
+      onQuantityChange(newQuantity);
+      return newQuantity;
+    });
   };
 
   const handleDecrement = () => {
-    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-    onQuantityChange(quantity - 1);
+    setQuantity(prevQuantity => {
+      const newQuantity = prevQuantity > 1 ? prevQuantity - 1 : 1;
+      onQuantityChange(newQuantity);
+      return newQuantity;
+    });
   };
 
   useEffect(() => {
@@ -36,6 +40,6 @@ const QuantitySelector = ( {price, discountPrice, isDiscount, onQuantityChange}:
       <Typography variant="h6" sx={{ ml: 2 }}>${(quantity * price).toFixed(2)}</Typography>
     </Box>
   );
-}
+};
 
 export default QuantitySelector;
