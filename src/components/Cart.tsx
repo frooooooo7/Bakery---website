@@ -65,7 +65,8 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
             <QuantitySelector 
               price={item.price} 
               discountPrice={item.discountPrice} 
-              isDiscount={item.isDiscount} 
+              isDiscount={item.isDiscount}
+              initialQuantity={quantities[item.productID] || 1} 
               onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)}
             />
           </div>
