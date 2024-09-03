@@ -1,3 +1,4 @@
+import Banner from "../../components/Banner"
 import Navbar from "../../components/Navbar"
 import { CheckboxLabelsProvider } from "./context/CheckboxLabelsContext"
 import { RangeSliderProvider } from "./context/RangeSliderContext"
@@ -5,13 +6,13 @@ import Categories from "./sections/Categories"
 import Filters from "./sections/Filters"
 import PopularProducts from "./sections/PopularProducts"
 import Products from "./sections/Products"
-import Shop from "./sections/ShopBanner"
+
 
 const ShopPage = () => {
   return (
     <div>
       <Navbar />
-      <Shop />
+      <Banner title="SKLEP"/>
       <CheckboxLabelsProvider>
         <RangeSliderProvider>
           <div className="container mx-auto lg:flex lg:justify-center">
