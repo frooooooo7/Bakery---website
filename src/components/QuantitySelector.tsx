@@ -37,13 +37,6 @@ const QuantitySelector = ({ price, discountPrice, isDiscount, onQuantityChange, 
       <Button onClick={handleDecrement} variant="outlined" color='secondary'>-</Button>
       <Typography variant="h6" sx={{ mx: 2 }}>{quantity}</Typography>
       <Button onClick={handleIncrement} variant="outlined" color='secondary'>+</Button>
-      {isDiscount ? 
-        <Typography variant="h6" sx={{ ml: 2 }}>
-          ${discountPrice !== undefined ? (quantity * discountPrice).toFixed(2) : 'N/A'}
-        </Typography> 
-        :
-        <Typography variant="h6" sx={{ ml: 2 }}>${(quantity * price).toFixed(2)}</Typography>  
-      }
     </Box>
   );
 };

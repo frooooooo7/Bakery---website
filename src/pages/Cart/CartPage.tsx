@@ -1,5 +1,6 @@
 import Banner from "../../components/Banner"
 import Navbar from "../../components/Navbar"
+import Products from "./sections/Products"
 
 
 const CartPage = () => {
@@ -7,6 +8,7 @@ const CartPage = () => {
     <div>
       <Navbar/>
       <Banner title="KOSZYK"/>
+      <Products/>
     </div>
   )
 }

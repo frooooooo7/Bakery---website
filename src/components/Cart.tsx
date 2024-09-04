@@ -1,19 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import QuantitySelector from "./QuantitySelector";
+import { Typography } from '@mui/material';
 
 const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
   const context = useContext(CartContext);
 
   if (!context) {
-      return null; 
+    return null;
   }
-  
+
   const { cart, removeFromCart } = context;
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
   const [totalPrice, setTotalPrice] = useState(0);
 
-  
+
 
   // Calculate total price
   useEffect(() => {
@@ -62,13 +63,22 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
           </div>
           <div className="ml-2 flex flex-col justify-center space-y-4">
             <h1 className="text-base font-bold tracking-wider">{item.title}</h1>
-            <QuantitySelector 
-              price={item.price} 
-              discountPrice={item.discountPrice} 
-              isDiscount={item.isDiscount}
-              initialQuantity={quantities[item.productID] || 1} 
-              onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)}
-            />
+            <div className="flex items-center">
+              <QuantitySelector
+                price={item.price}
+                discountPrice={item.discountPrice}
+                isDiscount={item.isDiscount}
+                initialQuantity={quantities[item.productID] || 1}
+                onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)}
+              />
+              {item.isDiscount ?
+                <Typography variant="h6" sx={{ ml: 2 }}>
+                  ${item.discountPrice !== undefined ? (quantities[item.productID] * item.discountPrice).toFixed(2) : 'N/A'}
+                </Typography>
+                :
+                <Typography variant="h6" sx={{ ml: 2 }}>${(quantities[item.productID] * item.price).toFixed(2)}</Typography>
+              }
+            </div>
           </div>
           <div className="absolute top-3 right-5 text-red-500 cursor-pointer" onClick={() => removeFromCart?.(item.productID)}>X</div>
         </div>
