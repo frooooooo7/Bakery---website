@@ -6,7 +6,7 @@ const Products = () => {
     const context = useContext(CartContext);
     if (!context) return null;
 
-    const { cart } = context;
+    const { cart, handleQuantityChange } = context;
 
     return (
         <section className="px-2 py-12">
@@ -27,14 +27,16 @@ const Products = () => {
                                     <td className="px-6 py-4 text-left">
                                         <div className="flex items-center">
                                             <div className="w-24 h-24 bg-gray-200 p-2 mr-4">
-                                                <img src={item.img} className="w-full h-full object-contain" alt={item.title}/>
+                                                <img src={item.img} className="w-full h-full object-contain" alt={item.title} />
                                             </div>
                                             {item.title}
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-center">{item.price.toFixed(2)} PLN</td>
                                     <td className="px-6 py-4 text-center">
-                                        <QuantitySelector price={item.price} isDiscount={item.isDiscount} onQuantityChange={() => console.log()}/>
+                                        <QuantitySelector
+                                            initialQuantity={item.quantity || 1}
+                                            onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)} />
                                     </td>
                                     <td className="px-6 py-4 text-center">100 PLN</td>
                                 </tr>

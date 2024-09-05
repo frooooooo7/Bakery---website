@@ -2,14 +2,11 @@ import { useEffect, useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 
 interface Props {
-  price: number;
-  discountPrice?: number;
-  isDiscount: boolean;
   onQuantityChange: (value: number) => void;
   initialQuantity?: number;
 }
 
-const QuantitySelector = ({ price, discountPrice, isDiscount, onQuantityChange, initialQuantity = 1}: Props) => {
+const QuantitySelector = ({ onQuantityChange, initialQuantity = 1}: Props) => {
   const [quantity, setQuantity] = useState(initialQuantity);
 
   const handleIncrement = () => {

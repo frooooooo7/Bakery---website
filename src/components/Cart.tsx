@@ -10,44 +10,23 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
     return null;
   }
 
-  const { cart, removeFromCart } = context;
-  const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
+  const { cart, removeFromCart, handleQuantityChange } = context;
   const [totalPrice, setTotalPrice] = useState(0);
-
-
 
   // Calculate total price
   useEffect(() => {
     const calculateTotal = () => {
       const total = cart?.reduce((sum, item) => {
-        const quantity = quantities[item.productID] || 1;
+        const quantity = item.quantity || 1;
         const price = item.isDiscount ? item.discountPrice ?? item.price : item.price ?? 0;
         return sum + quantity * price;
       }, 0) || 0;
       setTotalPrice(total);
     };
     calculateTotal();
-  }, [quantities, cart]);
+  }, [cart]);
 
-  // Handle quantity change and save to localStorage
-  const handleQuantityChange = (productID: string, quantity: number) => {
-    setQuantities(prevQuantities => {
-      const updatedQuantities = {
-        ...prevQuantities,
-        [productID]: quantity
-      };
-      localStorage.setItem('quantities', JSON.stringify(updatedQuantities));
-      return updatedQuantities;
-    });
-  };
-
-  // Load quantities from localStorage
-  useEffect(() => {
-    const savedQuantities = localStorage.getItem('quantities');
-    if (savedQuantities) {
-      setQuantities(JSON.parse(savedQuantities));
-    }
-  }, []);
+  
 
   return (
     <div className={`absolute z-50 top-12 right-0 bg-white drop-shadow-lg w-[400px] ${isCartOpened ? 'block' : 'hidden'}`}>
@@ -65,18 +44,17 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
             <h1 className="text-base font-bold tracking-wider">{item.title}</h1>
             <div className="flex items-center">
               <QuantitySelector
-                price={item.price}
-                discountPrice={item.discountPrice}
-                isDiscount={item.isDiscount}
-                initialQuantity={quantities[item.productID] || 1}
+                initialQuantity={item.quantity || 1}
                 onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)}
               />
               {item.isDiscount ?
                 <Typography variant="h6" sx={{ ml: 2 }}>
-                  ${item.discountPrice !== undefined ? (quantities[item.productID] * item.discountPrice).toFixed(2) : 'N/A'}
+                  ${(item.quantity * (item.discountPrice ?? item.price)).toFixed(2)}
                 </Typography>
                 :
-                <Typography variant="h6" sx={{ ml: 2 }}>${(quantities[item.productID] * item.price).toFixed(2)}</Typography>
+                <Typography variant="h6" sx={{ ml: 2 }}>
+                  ${(item.quantity * item.price).toFixed(2)}
+                </Typography>
               }
             </div>
           </div>
