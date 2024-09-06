@@ -26,19 +26,40 @@ const Products = () => {
                                 <tr key={item.productID}>
                                     <td className="px-6 py-4 text-left">
                                         <div className="flex items-center">
-                                            <div className="w-24 h-24 bg-gray-200 p-2 mr-4">
+                                            <div className="w-28 h-24 bg-gray-200 p-2 mr-4 flex-shrink-0">
                                                 <img src={item.img} className="w-full h-full object-contain" alt={item.title} />
                                             </div>
-                                            {item.title}
+                                            <h1 className="font-bold tracking-wider">{item.title}</h1>
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 text-center">{item.price.toFixed(2)} PLN</td>
+                                    <td className="px-6 py-4 text-center tracking-wider text-nowrap">
+                                        {item.isDiscount ?
+                                            <div>
+                                                <h3 className="text-gray-400 line-through font-bold">{item.price.toFixed(2)} PLN</h3>
+                                                {item.discountPrice?.toFixed(2)} PLN
+                                            </div>
+                                            :
+                                            <div>
+                                                {item.price.toFixed(2)} PLN
+                                            </div>
+                                        }
+                                    </td>
                                     <td className="px-6 py-4 text-center">
                                         <QuantitySelector
                                             initialQuantity={item.quantity || 1}
                                             onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)} />
                                     </td>
-                                    <td className="px-6 py-4 text-center">100 PLN</td>
+                                    <td className="px-6 py-4 text-center">
+                                        {item.isDiscount ?
+                                            <div className="text-nowrap">
+                                                {(Number(item.discountPrice?.toFixed(2)) * item.quantity).toFixed(2)} PLN
+                                            </div>
+                                            :
+                                            <div>
+                                                {(Number(item.price.toFixed(2)) * item.quantity).toFixed(2)} PLN
+                                            </div>
+                                        }
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

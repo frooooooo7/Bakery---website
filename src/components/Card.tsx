@@ -11,7 +11,8 @@ interface CardProps {
   discountPrice?: number;
   isDiscount: boolean;
   isNew: boolean;
-  background: string
+  background: string;
+  quantity: number;
 }
 
 const Card = (props: CardProps) => {
