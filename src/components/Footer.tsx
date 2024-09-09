@@ -15,7 +15,7 @@ import Google from "../assets/svg/Google";
 const Footer = () => {
     return (
         <section className="px-2 py-6 lg:py-12">
-            <div className="container mx-auto">
+            <div className="container mx-auto max-w-7xl">
                 <div className="lg:flex lg:justify-center lg:space-x-10 xl:space-x-28">
                     <div className="gallery">
                         <h1 className="text-center lg:text-left tracking-wider py-10 text-xl font-bold">GALERIA</h1>
