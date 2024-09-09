@@ -16,6 +16,7 @@ interface CartContextType {
     addToCart: (product: Product) => void;
     removeFromCart: (productID: string) => void;
     handleQuantityChange: (productID: string, quantity: number) => void;
+    calculateTotalPrice: () => number;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -23,20 +24,7 @@ const CartContext = createContext<CartContextType | null>(null);
 const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     const [cart, setCart] = useState<Product[]>([]);
 
-    // Load cart from localStorage on initial render
-    useEffect(() => {
-        const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
-            setCart(JSON.parse(savedCart));
-        }
-    }, []);
 
-    // Save cart to localStorage whenever it changes and if cart is not empty.
-    useEffect(() => {
-        if (cart.length > 0) {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-    }, [cart]);
 
     const addToCart = (product: Product) => {
         setCart((prevCart) => [...prevCart, product]);
@@ -54,8 +42,36 @@ const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
         ));
     };
 
+    const calculateTotalPrice = () => {
+        const total = cart?.reduce((sum, item) => {
+          const quantity = item.quantity || 1;
+          const price = item.isDiscount ? item.discountPrice ?? item.price : item.price ?? 0;
+          return sum + quantity * price;
+        }, 0) || 0;
+        return total;
+    }
+
+    useEffect(() => {
+        calculateTotalPrice();
+    }, [cart])
+
+    // Load cart from localStorage on initial render
+    useEffect(() => {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            setCart(JSON.parse(savedCart));
+        }
+    }, []);
+
+    // Save cart to localStorage whenever it changes and if cart is not empty.
+    useEffect(() => {
+        if (cart.length > 0) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    }, [cart]);
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, handleQuantityChange }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, handleQuantityChange, calculateTotalPrice }}>
             {children}
         </CartContext.Provider>
     );

@@ -6,13 +6,13 @@ const Products = () => {
     const context = useContext(CartContext);
     if (!context) return null;
 
-    const { cart, handleQuantityChange } = context;
+    const { cart, handleQuantityChange, calculateTotalPrice } = context;
 
     return (
         <section className="px-2 py-12">
             <div className="container mx-auto">
                 <div className="overflow-x-auto">
-                    <table className="border border-gray-200">
+                    <table className="mx-auto border border-gray-200">
                         <thead className="border-b border-gray-200">
                             <tr className="text-gray-500 tracking-wider">
                                 <th className="px-6 py-3 text-center">Produkt</th>
@@ -65,6 +65,20 @@ const Products = () => {
                         </tbody>
                     </table>
                 </div>
+
+                <div className="mt-5 flex flex-col items-center justify-center space-y-3">
+                    <input type="text" className="border border-gray-300 py-2 px-4 text-center" placeholder="Kupon" />
+                    <button className='px-4 py-2 bg-pink-700 text-white border-2 border-pink-800 rounded-lg font-bold active:bg-pink-500'>ZASTOSUJ</button>
+                </div>
+
+                <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center justify-center space-x-4">
+                        <h1 className="py-5">TOTAL</h1>
+                        <h1>{calculateTotalPrice().toFixed(2)} PLN</h1>
+                    </div>
+                    <button className='px-4 py-2 bg-pink-700 text-white border-2 border-pink-800 rounded-lg font-bold active:bg-pink-500'>PRZEJDŹ DO PŁATNOŚCI</button>
+                </div>
+
             </div>
         </section>
     );

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import QuantitySelector from "./QuantitySelector";
 import { Typography } from '@mui/material';
@@ -10,29 +10,14 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
     return null;
   }
 
-  const { cart, removeFromCart, handleQuantityChange } = context;
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  // Calculate total price
-  useEffect(() => {
-    const calculateTotal = () => {
-      const total = cart?.reduce((sum, item) => {
-        const quantity = item.quantity || 1;
-        const price = item.isDiscount ? item.discountPrice ?? item.price : item.price ?? 0;
-        return sum + quantity * price;
-      }, 0) || 0;
-      setTotalPrice(total);
-    };
-    calculateTotal();
-  }, [cart]);
-
+  const { cart, removeFromCart, handleQuantityChange, calculateTotalPrice } = context;
   
 
   return (
     <div className={`absolute z-50 top-12 right-0 bg-white drop-shadow-lg w-[400px] ${isCartOpened ? 'block' : 'hidden'}`}>
       <div className="p-5">
         <h1 className="text-lg font-bold">W KOSZYKU: {cart?.length} PRODUKTY</h1>
-        <h1 className="text-base font-bold">ŁĄCZNA CENA: {totalPrice.toFixed(2)} PLN</h1>
+        <h1 className="text-base font-bold">ŁĄCZNA CENA: {calculateTotalPrice().toFixed(2)} PLN</h1>
       </div>
       <hr></hr>
       {cart?.map((item) => (
