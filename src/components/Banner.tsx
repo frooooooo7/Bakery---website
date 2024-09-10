@@ -1,12 +1,14 @@
 import shopBackground from "../assets/shop.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 interface BannerProps {
     title: string;
 }
 
 const Banner = ({ title }: BannerProps) => {
+
 
     return (
         <section>
@@ -17,7 +19,7 @@ const Banner = ({ title }: BannerProps) => {
                 </div>
             </div>
             <div className="flex justify-center items-center space-x-4 py-4">
-                <h1 className="text-sm text-gray-400 font-bold tracking-wider">STRONA GŁÓWNA</h1>
+                <Link to={"/"} className="text-sm text-gray-400 font-bold tracking-wider cursor-pointer hover:text-gray-700 transition duration-300">STRONA GŁÓWNA</Link>
                 <FontAwesomeIcon icon={faArrowRight}/>
                 <h1 className="text-sm text-gray-600 font-bold tracking-wider">{title}</h1>
             </div>

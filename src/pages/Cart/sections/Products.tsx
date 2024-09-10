@@ -32,10 +32,10 @@ const Products = () => {
                                 <tr key={item.productID}>
                                     <td className="px-6 py-4 text-left">
                                         <div className="flex items-center">
-                                            <div className="w-28 h-24 bg-gray-200 p-2 mr-4 flex-shrink-0">
+                                            <div className="w-28 h-24 bg-gray-200 p-2 mr-4 flex-shrink-0 cursor-pointer">
                                                 <img src={item.img} className="w-full h-full object-contain" alt={item.title} />
                                             </div>
-                                            <h1 className="font-bold tracking-wider">{item.title}</h1>
+                                            <h1 className="font-bold tracking-wider cursor-pointer hover:text-pink-800 transition duration-300">{item.title}</h1>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-center tracking-wider text-nowrap">

@@ -2,10 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faEllipsisVertical, faX, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import bakery_logo from "../assets/bakery-logo.png"
-import { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import "../styles/ButtonFun.css"
-import { CartContext } from '../contexts/CartContext'
 import Cart from './Cart'
+import { useNavigate } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -13,6 +13,7 @@ const Navbar = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [isLoc, setIsLoc] = useState(false);
     const [isCartOpened, setIsCartOpened] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsOpenMenu(!isOpenMenu);
@@ -26,7 +27,7 @@ const Navbar = () => {
         setIsCartOpened(!isCartOpened)
     }
 
-   
+
 
     return (
         <header>
@@ -42,12 +43,12 @@ const Navbar = () => {
                             <p>38-200 Jasło</p>
                         </div>
                     </div>
-                    <div className='cursor-pointer'>
-                        <img src={bakery_logo} className='h-16 xl:h-20' />
+                    <div className='cursor-pointer' onClick={() => navigate("/")}>
+                        <img src={bakery_logo} className='h-16 xl:h-20 transition duration-300 ease-in-out hover:scale-105' />
                     </div>
                     <div>
-                        <button className='button material-bubble flex items-center justify-center'>           
-                            <FontAwesomeIcon icon={faEnvelope} className='w-4 h-4'/>
+                        <button className='button material-bubble flex items-center justify-center'>
+                            <FontAwesomeIcon icon={faEnvelope} className='w-4 h-4' />
                             Skontaktuj się
                         </button>
                     </div>
@@ -67,7 +68,7 @@ const Navbar = () => {
                 </div>
                 <div className='relative'>
                     <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' onClick={toggleCart} />
-                    <Cart isCartOpened={isCartOpened}/>
+                    <Cart isCartOpened={isCartOpened} />
                 </div>
             </div>
 
