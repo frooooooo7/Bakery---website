@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import QuantitySelector from "./QuantitySelector";
 import { Typography } from '@mui/material';
+import "../styles/ButtonFun.css"
 
 const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
   const context = useContext(CartContext);
@@ -46,6 +47,11 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
           <div className="absolute top-3 right-5 text-red-500 cursor-pointer" onClick={() => removeFromCart?.(item.productID)}>X</div>
         </div>
       ))}
+      <hr></hr>
+      <div className="flex items-center justify-between p-5">
+        <button className='px-5 py-3 bg-white text-black border-2 border-black rounded-lg font-bold'>PRZEJDŹ DO KOSZYKA</button>
+        <button className='px-5 py-3 bg-pink-700 text-white border-2 border-pink-800 rounded-lg font-bold'>ZAPŁAĆ</button>
+      </div>      
     </div>
   );
 };
