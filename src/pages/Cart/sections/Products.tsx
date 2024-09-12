@@ -3,12 +3,14 @@ import { CartContext } from "../../../contexts/CartContext";
 import QuantitySelector from "../../../components/QuantitySelector";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
     const context = useContext(CartContext);
     if (!context) return null;
 
     const { cart, handleQuantityChange, calculateTotalPrice } = context;
+    const navigate = useNavigate();
 
     const handleCoupon = () => {
         toast.error('Nieprawidłowy kupon!');
@@ -32,10 +34,14 @@ const Products = () => {
                                 <tr key={item.productID}>
                                     <td className="px-6 py-4 text-left">
                                         <div className="flex items-center">
-                                            <div className="w-28 h-24 bg-gray-200 p-2 mr-4 flex-shrink-0 cursor-pointer">
+                                            <div className="w-28 h-24 bg-gray-200 p-2 mr-4 flex-shrink-0 cursor-pointer" onClick={() => navigate(`/produkt/${item.productID}`)}>
                                                 <img src={item.img} className="w-full h-full object-contain" alt={item.title} />
                                             </div>
-                                            <h1 className="font-bold tracking-wider cursor-pointer hover:text-pink-800 transition duration-300">{item.title}</h1>
+                                            <h1
+                                                className="font-bold tracking-wider cursor-pointer hover:text-pink-800 transition duration-300"
+                                                onClick={() => navigate(`/produkt/${item.productID}`)}
+                                            >{item.title}
+                                            </h1>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-center tracking-wider text-nowrap">
@@ -80,7 +86,7 @@ const Products = () => {
                             onClick={handleCoupon}
                         >ZASTOSUJ
                         </button>
-                        <ToastContainer/>
+                        <ToastContainer />
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-10">
