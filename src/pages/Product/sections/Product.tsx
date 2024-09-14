@@ -2,6 +2,7 @@ import { doc, getDoc} from "firebase/firestore";
 import { useParams } from "react-router-dom"
 import { db } from "../../../firebase";
 import { useEffect, useState } from "react";
+import ImageGallery from "../components/ImageGallery";
 
 
 interface Product {
@@ -9,7 +10,7 @@ interface Product {
     title: string;
     price: number;
     discountPrice?: number;
-    img: string;
+    img: string[];
     isDiscount: boolean;
     isNew: boolean;
     category: string;
@@ -56,7 +57,7 @@ const Product = () => {
     return (
         <section className="px-2 pt-10">
             <div className="container mx-auto max-w-5xl">
-                <img src={productData?.img} alt="" />
+                <ImageGallery img={productData?.img || []}/>
                 <h2>{productData?.title}</h2>
             </div>
         </section>

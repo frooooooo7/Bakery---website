@@ -1,4 +1,4 @@
-import chocolate_truffles from "../../../assets/NEW_PRODUCTS/product-1.png"
+import chocolate_truffles from "../../../assets/NEW_PRODUCTS/chocolate_truffles_1.png"
 import chocolate_pudding from "../../../assets/NEW_PRODUCTS/product-2.png"
 import dark_chocolate_cake from "../../../assets/NEW_PRODUCTS/product-3.png"
 import chocolate_cookies from "../../../assets/NEW_PRODUCTS/product-4.png"
