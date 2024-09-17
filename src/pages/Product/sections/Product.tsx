@@ -6,6 +6,7 @@ import ImageGallery from "../components/ImageGallery";
 import ProductRating from "../components/ProductRating";
 import QuantitySelector from "../../../components/QuantitySelector";
 import { CartContext } from "../../../contexts/CartContext";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 interface Product {
@@ -43,7 +44,7 @@ const Product = () => {
             const productSnapshot = await getDoc(productRef);
 
             if (productSnapshot.exists()) {
-                setProductData(productSnapshot.data() as Product);
+                setProductData({...productSnapshot.data(), productID: productSnapshot.id} as Product);
             } else {
                 setError("Product not found.");
             }
@@ -71,6 +72,7 @@ const Product = () => {
             quantity: quantity,
         }
         addToCart(productToAdd)
+        toast.success("Pomyślnie dodano do koszyka!")
     }
 
     useEffect(() => {
@@ -125,6 +127,7 @@ const Product = () => {
                                         className='px-2 py-2 lg:px-4 lg:py-3 bg-pink-700 text-white border-2 border-pink-800 rounded-lg font-bold'
                                         onClick={handleAddToCart}
                                     >DODAJ DO KOSZYKA</button>
+                                    <ToastContainer />
                                 </div>
                                 <hr></hr>
                             </div>
