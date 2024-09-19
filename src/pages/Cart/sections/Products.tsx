@@ -4,12 +4,14 @@ import QuantitySelector from "../../../components/QuantitySelector";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 
 const Products = () => {
     const context = useContext(CartContext);
     if (!context) return null;
 
-    const { cart, handleQuantityChange, calculateTotalPrice } = context;
+    const { cart, removeFromCart, handleQuantityChange, calculateTotalPrice } = context;
     const navigate = useNavigate();
 
     const handleCoupon = () => {
@@ -18,6 +20,7 @@ const Products = () => {
 
     return (
         <section className="px-2 py-12">
+            <ToastContainer />
             <div className="container mx-auto max-w-4xl">
                 <div className="overflow-x-auto">
                     <table className="mx-auto border border-gray-200 max-w-4xl">
@@ -58,7 +61,7 @@ const Products = () => {
                                     </td>
                                     <td className="px-6 py-4 text-center">
                                         <QuantitySelector
-                                            initialQuantity={item.quantity || 1}
+                                            quantity={item.quantity || 1}
                                             onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)} />
                                     </td>
                                     <td className="px-6 py-4 text-center">
@@ -71,6 +74,14 @@ const Products = () => {
                                                 {(Number(item.price.toFixed(2)) * item.quantity).toFixed(2)} PLN
                                             </div>
                                         }
+
+                                    </td>
+                                    <td className="pr-6 text-center cursor-pointer">
+                                        <FontAwesomeIcon
+                                            icon={faTrashCan}
+                                            style={{ color: "#ff0000", }}
+                                            onClick={() => removeFromCart(item.productID)} 
+                                        />
                                     </td>
                                 </tr>
                             ))}
@@ -86,7 +97,6 @@ const Products = () => {
                             onClick={handleCoupon}
                         >ZASTOSUJ
                         </button>
-                        <ToastContainer />
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-10">
