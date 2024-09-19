@@ -32,7 +32,7 @@ const Cart = ({ isCartOpened }: { isCartOpened: boolean }) => {
             <h1 className="text-base font-bold tracking-wider">{item.title}</h1>
             <div className="flex items-center">
               <QuantitySelector
-                initialQuantity={item.quantity || 1}
+                quantity={item.quantity || 1}
                 onQuantityChange={(quantity) => handleQuantityChange(item.productID, quantity)}
               />
               {item.isDiscount ?
