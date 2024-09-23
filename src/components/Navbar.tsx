@@ -2,10 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faEllipsisVertical, faX, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import bakery_logo from "../assets/bakery-logo.png"
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import "../styles/ButtonFun.css"
 import Cart from './Cart'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import "./Navbar.css"
+import { CartContext } from '../contexts/CartContext'
 
 
 const Navbar = () => {
@@ -13,6 +15,11 @@ const Navbar = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [isLoc, setIsLoc] = useState(false);
     const [isCartOpened, setIsCartOpened] = useState(false);
+
+    const context = useContext(CartContext)
+    if (!context) return null
+    const { cart } = context
+
     const navigate = useNavigate();
 
     const toggleMenu = () => {
@@ -55,19 +62,32 @@ const Navbar = () => {
                 </div>
             </div>
             <div className='container mx-auto hidden lg:flex justify-between items-center px-3 py-3'>
-                <div>
-                    <ul className='flex space-x-9 text-sm xl:text-xl font-bold cursor-pointer'>
-                        <li>Strona Główna</li>
-                        <li>Oferta</li>
-                        <li>Skład</li>
-                        <li>Referencje</li>
-                        <li>Ceny</li>
-                        <li>Galeria</li>
-                        <li>Skontaktuj się</li>
+                <nav className="navigation">
+                    <ul className="menu">
+                        <li className="li">
+                            <Link to={"/"}>Strona Główna</Link>
+                        </li>
+                        <li className="li">
+                            <Link to={"/sklep"}>Sklep</Link>
+                        </li>
+                        <li className="li">
+                            <Link to={""}>Oferty</Link>
+                        </li>
+                        <li className="li">
+                            <Link to={""}>Galeria</Link>
+                        </li>
+                        <li className="li">
+                            <Link to={""}>Skontaktuj się</Link>
+                        </li>
                     </ul>
-                </div>
+                </nav>
                 <div className='relative'>
                     <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' onClick={toggleCart} />
+                    {cart.length > 0 && (
+                        <span className="absolute -top-1 -right-4  text-[#be185d] font-bold flex items-center justify-center text-sm">
+                            {cart.length}
+                        </span>
+                    )}
                     <Cart isCartOpened={isCartOpened} />
                 </div>
             </div>

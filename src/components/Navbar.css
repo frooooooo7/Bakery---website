@@ -1,0 +1,53 @@
+.navigation {
+    display: flex;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu > li:not(:last-child) {
+    margin-right: 40px;
+}
+
+.menu a, .menu .li > Link {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    color: #000000;
+    transition: color 0.2s ease;
+    padding: 3px 0;
+    font-weight: bold;
+}
+
+.menu a:hover, .menu .li > Link:hover {
+    color: #be185d;
+}
+
+.menu a:hover::after, .menu .li > Link:hover::after,
+.menu a:hover::before, .menu .li > Link:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.menu a::after, .menu .li > Link::after,
+.menu a::before, .menu .li > Link::before {
+    content: '';
+    position: absolute;
+    top: calc(100% + 5px);
+    width: 0;
+    right: 0;
+    height: 3px;
+}
+
+.menu a::before, .menu .li > Link::before {
+    transition: width 0.4s cubic-bezier(0.51, 0.18, 0, 0.88) 0.1s;
+    background: #000000;
+}
+
+.menu a::after, .menu .li > Link::after {
+    transition: width 0.2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
+    background: #be185d;
+}
