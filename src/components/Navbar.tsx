@@ -82,7 +82,7 @@ const Navbar = () => {
                     </ul>
                 </nav>
                 <div className='relative'>
-                    <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9' onClick={toggleCart} />
+                    <FontAwesomeIcon icon={faCartShopping} className='h-7 w-7 xl:h-9 xl:w-9 hover:text-[#be185d] transition duration-300' onClick={toggleCart} />
                     {cart.length > 0 && (
                         <span className="absolute -top-1 -right-4  text-[#be185d] font-bold flex items-center justify-center text-sm">
                             {cart.length}
