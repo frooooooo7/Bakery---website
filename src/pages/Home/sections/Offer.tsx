@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import party_cupcakes from "../../../assets/party_cupcakes.jpg";
 import choco_cupcakes from "../../../assets/choco_cakes.webp";
 import weeding_cakes from "../../../assets/weeding_cakes.webp";
+import { motion } from 'framer-motion'
 
 
 const Offer = () => {
@@ -63,12 +64,21 @@ const Offer = () => {
     return (
         <section className="px-2 py-6 lg:py-12">
             <div className="container mx-auto">
-                <h1 className='text-center text-3xl font-bold pb-10 md:text-3xl lg:text-5xl xl:text-6xl'>CO OFERUJEMY</h1>
-                <div className="slider-container">
+                <motion.h1
+                    whileInView={{ scale: 1}}
+                    initial={{ scale: 0}}
+                    transition={{ duration: 0.7}}
+                    className='text-center text-3xl font-bold pb-10 md:text-3xl lg:text-5xl xl:text-6xl'>CO OFERUJEMY
+                </motion.h1>
+                <motion.div 
+                initial={{ y: 200, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, ease: "easeInOut"}}
+                className="slider-container">
                     <Slider {...settings}>
                         {offers.map((offer, index) => (
                             <div className='p-4' key={index}>
-                                <div key={index} className="flex flex-col items-center text-center p-4 bg-gray-100 border border-gray-300">
+                                <div key={index} className="flex flex-col items-center text-center p-4 bg-gray-100 border border-gray-300" style={{ height: "450px" }}>
                                     <div className='w-full h-60 flex items-center justify-center'>
                                         <img src={offer.img} className='w-full h-full object-cover' />
                                     </div>
@@ -79,7 +89,7 @@ const Offer = () => {
                             </div>
                         ))}
                     </Slider>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
